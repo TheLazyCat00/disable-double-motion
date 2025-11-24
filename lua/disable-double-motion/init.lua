@@ -1,6 +1,6 @@
 local M = {}
 
-function M.disableDoubles()
+function M.disableDoubles(substitution)
 	function _G.lineMotion()
 		local lastOperator = vim.v.operator
 
@@ -23,7 +23,7 @@ function M.disableDoubles()
 
 
 	local doubles = { "d", "y", "c", "=", "<", ">", "v" }
-	local mode = "o"
+	local mode = substitution
 
 	for _, double in ipairs(doubles) do
 		vim.keymap.set(mode, double, "<NOP>")
