@@ -18,15 +18,14 @@ function M.disableDoubles(substitution)
 		end
 	end
 
-	vim.keymap.set("x","u", "V", { desc = "Currentline" })
-	vim.keymap.set("o", "u", _G.lineMotion, { desc = "Current line" })
+	vim.keymap.set("x", substitution, "V", { desc = "Currentline" })
+	vim.keymap.set("o", substitution, _G.lineMotion, { desc = "Current line" })
 
 
 	local doubles = { "d", "y", "c", "=", "<", ">", "v" }
-	local mode = substitution
 
 	for _, double in ipairs(doubles) do
-		vim.keymap.set(mode, double, "<NOP>")
+		vim.keymap.set("o", double, "<NOP>")
 	end
 end
 
